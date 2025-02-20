@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4iae5u3pd3ef"]
+[gd_scene load_steps=3 format=3 uid="uid://d3ms6mwgycy7l"]
 
 [ext_resource type="PackedScene" uid="uid://b44rpcwb78k1y" path="res://scene/fourmie.tscn" id="1_3f6nr"]
+[ext_resource type="PackedScene" uid="uid://cx3t6flflc4ln" path="res://scene/camera.tscn" id="2_ynv8h"]
 
 [node name="game" type="Node2D"]
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_3f6nr")]
-position = Vector2(655, 323)
+position = Vector2(160, 281)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ynv8h")]
