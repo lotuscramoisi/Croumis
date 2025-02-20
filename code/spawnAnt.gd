@@ -1,12 +1,12 @@
 extends Node2D
 
-@export var tilemap: TileMapLayer          # Reference to your TileMap
-@export var ant: PackedScene         # The PackedScene for the ant enemy
-@export var spawn_layer: int = 1      # The spawn layer in your TileMap (if you are using layers)
-@export var enemy_parent: Node2D     # Optional: Parent node for organization (optional)
+@export var tilemap: TileMapLayer
+@export var ant: PackedScene
+@export var spawn_layer: int = 1
+@export var enemy_parent: Node2D
  
 func _ready() -> void:
-	pass
+	spawn_ant()
 
 # Spawn the ant
 func spawn_ant():
@@ -16,7 +16,7 @@ func spawn_ant():
 		return
 	
 	var spawn_position = spawn_positions.pick_random()
-	var enemy = ant.instantiate()  # Create a new instance of the ant
+	var enemy = ant.instantiate()
 
 	enemy.position = spawn_position  # Set the position of the ant in the world
 

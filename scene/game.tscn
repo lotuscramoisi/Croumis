@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3ms6mwgycy7l"]
+[gd_scene load_steps=5 format=3 uid="uid://d3ms6mwgycy7l"]
 
 [ext_resource type="PackedScene" uid="uid://b44rpcwb78k1y" path="res://scene/fourmie.tscn" id="1_3f6nr"]
-[ext_resource type="PackedScene" path="res://scene/camera.tscn" id="2_ynv8h"]
+[ext_resource type="PackedScene" uid="uid://cx3t6flflc4ln" path="res://scene/camera.tscn" id="2_ynv8h"]
 [ext_resource type="PackedScene" uid="uid://k70qvyf720uu" path="res://Worldmap.tscn" id="3_0ooj0"]
+[ext_resource type="Script" path="res://code/spawnAnt.gd" id="4_mn7sr"]
 
 [node name="game" type="Node2D"]
 
@@ -12,3 +13,9 @@ position = Vector2(160, 281)
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ynv8h")]
 
 [node name="TileMapLayer" parent="." instance=ExtResource("3_0ooj0")]
+
+[node name="SpawnerAnts" type="Node2D" parent="." node_paths=PackedStringArray("tilemap", "enemy_parent")]
+script = ExtResource("4_mn7sr")
+tilemap = NodePath("../TileMapLayer")
+ant = ExtResource("1_3f6nr")
+enemy_parent = NodePath(".")
