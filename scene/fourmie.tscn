@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b44rpcwb78k1y"]
+[gd_scene load_steps=2 format=3 uid="uid://bwaaiywstlel6"]
 
 [ext_resource type="Texture2D" uid="uid://ir4me35o6drk" path="res://assets/foumie.png" id="1_3m6iq"]
-[ext_resource type="Script" path="res://scene/AntMoving.gd" id="2_gxqfj"]
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="Ant" type="Sprite2D"]
 texture = ExtResource("1_3m6iq")
-script = ExtResource("2_gxqfj")
