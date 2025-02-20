@@ -7,12 +7,10 @@
 
 [node name="game" type="Node2D"]
 
-[node name="Sprite2D" parent="." instance=ExtResource("1_3f6nr")]
-position = Vector2(160, 281)
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ynv8h")]
 
 [node name="TileMapLayer" parent="." instance=ExtResource("3_0ooj0")]
+scale = Vector2(2.34578, 2.34578)
 
 [node name="SpawnerAnts" type="Node2D" parent="." node_paths=PackedStringArray("tilemap", "enemy_parent")]
 script = ExtResource("4_mn7sr")
