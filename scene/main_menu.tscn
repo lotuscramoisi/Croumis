@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://p1q4y84msw4c"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_v77fq"]
+[ext_resource type="Script" path="res://code/main_menu.gd" id="1_v77fq"]
 [ext_resource type="Texture2D" uid="uid://dt7pjudo6ojlf" path="res://assets/fourmis-disperse-graines.jpeg" id="2_nhweu"]
 
 [sub_resource type="SystemFont" id="SystemFont_se54k"]

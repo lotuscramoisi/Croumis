@@ -3,6 +3,11 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
+var zoom_minimum  = Vector2(.500001, .500001)
+var zoom_maximum  = Vector2(4.5000001, 4.5000001)
+var zoom_speed = Vector2(.1500001, .1500001)
+
+@onready var camera = $Camera2D
 
 func _physics_process(delta: float) -> void:
 
@@ -23,3 +28,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("input_scroll_down"):
+		if camera.zoom < zoom_maximum:
+					camera.zoom += zoom_speed
+					pass
+	elif Input.is_action_just_pressed("input_scroll_up"):
+		if camera.zoom > zoom_minimum:
+					camera.zoom -= zoom_speed
+					pass
