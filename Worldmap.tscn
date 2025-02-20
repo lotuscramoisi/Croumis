@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://k70qvyf720uu"]
+
+[ext_resource type="Texture2D" uid="uid://crgc5e81lqx73" path="res://assets/Nest.png" id="1_0qjxx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ermum"]
+texture = ExtResource("1_0qjxx")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gftbl"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_ermum")
+
+[node name="TileMapLayer" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_gftbl")

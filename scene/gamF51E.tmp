@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4iae5u3pd3ef"]
+
+[ext_resource type="PackedScene" uid="uid://b44rpcwb78k1y" path="res://scene/fourmie.tscn" id="1_3f6nr"]
+[ext_resource type="PackedScene" uid="uid://k70qvyf720uu" path="res://Worldmap.tscn" id="2_xsq80"]
+[ext_resource type="Script" path="res://code/spawnAnt.gd" id="3_762f6"]
+
+[node name="game" type="Node2D"]
+
+[node name="Ant" parent="." instance=ExtResource("1_3f6nr")]
+position = Vector2(75, 36)
+scale = Vector2(0.28, 0.3)
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_xsq80")]
+
+[node name="AntSpawner" type="Node2D" parent="."]
+script = ExtResource("3_762f6")
