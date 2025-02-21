@@ -10,13 +10,12 @@ var velocity = Vector2.ZERO
 var current_state = State.WANDERING
 var target_position = Vector2.ZERO
 
-@export var pheromone: PackedScene = preload("res://scene/pheromone.tscn") as PackedScene
+@export var pheromone: PackedScene
 @export var pheromone_parent: Node2D
-
-var spawn_timer = 0.0
-
-# Called when the node enters the scene tree for the first time.
+@onready var timer = $Timer
+ 
 func _ready() -> void:
+	timer.timeout.connect(spawn_phero)
 	pick_random_direction()	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,12 +33,6 @@ func _process(delta: float) -> void:
 	# Flip the sprite when changing direction
 	if velocity.length() > 0:
 		rotation = velocity.angle() + PI / 2
-
-	# Spawn enemy every second
-	spawn_timer += delta
-	if spawn_timer >= 1.0:
-		spawn_timer = 0.0
-		spawn_enemy()
 		
 func is_alive(delta):
 	age += delta
@@ -77,7 +70,10 @@ func start_hunting(target: Vector2):
 	current_state = State.HUNTING
 	target_position = target
 
-func spawn_enemy():
+func spawn_phero():
+	GlobalPheromon.increase_value(position.x,position.y,1)
+	
+	
 	if pheromone:
 		var new_pheromone = pheromone.instantiate()
 		new_pheromone.position = position

@@ -23,5 +23,5 @@ enemy_parent = NodePath(".")
 wait_time = 10.0
 autostart = true
 
-[node name="Phero" type="Node2D" parent="."]
+[node name="map_phero" type="Node2D" parent="."]
 script = ExtResource("5_toswq")
