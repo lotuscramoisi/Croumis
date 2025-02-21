@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnfy43lai5m1"]
+
+[ext_resource type="Script" path="res://code/AntHandling.gd" id="1_7b4hm"]
+[ext_resource type="PackedScene" uid="uid://bwaaiywstlel6" path="res://scene/fourmie.tscn" id="2_abg4r"]
+
+[node name="Ant" type="Node2D"]
+script = ExtResource("1_7b4hm")
+
+[node name="Ant" parent="." instance=ExtResource("2_abg4r")]

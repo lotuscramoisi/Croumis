@@ -4,11 +4,14 @@ extends Node2D
 @export var ant: PackedScene
 @export var spawn_layer: int = 1
 @export var enemy_parent: Node2D
+@onready var timer = $Timer
  
 func _ready() -> void:
+	timer.timeout.connect(spawn_ant)
 	spawn_ant()
 
 func spawn_ant():
+	print("Spawn ant")
 	var spawn_positions = get_spawn_positions()
 	if spawn_positions.is_empty():
 		print("No spawn positions available!")
@@ -23,7 +26,7 @@ func spawn_ant():
 		enemy_parent.add_child(enemy)
 	else:
 		add_child(enemy)
-	 
+
 func get_spawn_positions() -> Array:
 	var spawn_positions = []
 	

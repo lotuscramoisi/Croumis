@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3ms6mwgycy7l"]
+[gd_scene load_steps=5 format=3 uid="uid://d3ms6mwgycy7l"]
 
-[ext_resource type="PackedScene" uid="uid://b44rpcwb78k1y" path="res://scene/fourmie.tscn" id="1_3f6nr"]
 [ext_resource type="PackedScene" uid="uid://cx3t6flflc4ln" path="res://scene/camera.tscn" id="2_ynv8h"]
-[ext_resource type="PackedScene" uid="uid://clmrp4khlyfi5" path="res://Worldmap.tscn" id="3_0ooj0"]
+[ext_resource type="PackedScene" uid="uid://k70qvyf720uu" path="res://Worldmap.tscn" id="3_0ooj0"]
+[ext_resource type="PackedScene" uid="uid://dnfy43lai5m1" path="res://scene/ant.tscn" id="4_82kjx"]
+[ext_resource type="Script" path="res://code/spawnAnt.gd" id="4_mn7sr"]
+
 
 [node name="game" type="Node2D"]
-
-[node name="Sprite2D" parent="." instance=ExtResource("1_3f6nr")]
-position = Vector2(160, 281)
 
 [node name="camera" parent="." instance=ExtResource("2_ynv8h")]
 
 [node name="TileMapLayer" parent="." instance=ExtResource("3_0ooj0")]
+scale = Vector2(2.34578, 2.34578)
+
+[node name="SpawnerAnts" type="Node2D" parent="." node_paths=PackedStringArray("tilemap", "enemy_parent")]
+script = ExtResource("4_mn7sr")
+tilemap = NodePath("../TileMapLayer")
+ant = ExtResource("4_82kjx")
+enemy_parent = NodePath(".")
+
+[node name="Timer" type="Timer" parent="SpawnerAnts"]
+wait_time = 10.0
+autostart = true

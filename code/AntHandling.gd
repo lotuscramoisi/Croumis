@@ -1,8 +1,11 @@
-extends Sprite2D
+extends Node2D
 
 enum State { WANDERING, HUNTING}
 
-const SPEED = 60
+
+@export var LIFESPAN: float = 100
+@export var SPEED: float = 60
+var age: float = 0
 var velocity = Vector2.ZERO
 var current_state = State.WANDERING
 var target_position = Vector2.ZERO
@@ -18,6 +21,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	is_alive(delta)
+	
 	match current_state:
 		State.WANDERING:
 			wander_behavior()
@@ -35,6 +40,14 @@ func _process(delta: float) -> void:
 	if spawn_timer >= 1.0:
 		spawn_timer = 0.0
 		spawn_enemy()
+		
+func is_alive(delta):
+	age += delta
+	if age >= LIFESPAN:
+		die()
+
+func die():
+	queue_free()
 
 func wander_behavior():
 	if randf() < 0.10:
