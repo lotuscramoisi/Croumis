@@ -2,9 +2,9 @@ extends Node2D
 
 enum State { WANDERING, HUNTING}
 
-
 @export var LIFESPAN: float = 100
 @export var SPEED: float = 60
+
 var age: float = 0
 var velocity = Vector2.ZERO
 var current_state = State.WANDERING
@@ -17,7 +17,7 @@ var spawn_timer = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pick_random_direction()
+	pick_random_direction()	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 			wander_behavior()
 		State.HUNTING:
 			hunt_behavior()
-	
+
 	position += delta * velocity
 	
 	# Flip the sprite when changing direction
