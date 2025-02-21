@@ -15,6 +15,7 @@ var target_position = Vector2.ZERO
 @onready var timer = $Timer
  
 func _ready() -> void:
+	z_index = 2
 	timer.timeout.connect(spawn_phero)
 	pick_random_direction()	
 
