@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://b44rpcwb78k1y" path="res://scene/fourmie.tscn" id="1_3f6nr"]
 [ext_resource type="PackedScene" uid="uid://cx3t6flflc4ln" path="res://scene/camera.tscn" id="2_ynv8h"]
-[ext_resource type="PackedScene" path="res://Worldmap.tscn" id="3_0ooj0"]
+[ext_resource type="PackedScene" uid="uid://clmrp4khlyfi5" path="res://Worldmap.tscn" id="3_0ooj0"]
 
 [node name="game" type="Node2D"]
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_3f6nr")]
 position = Vector2(160, 281)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_ynv8h")]
+[node name="camera" parent="." instance=ExtResource("2_ynv8h")]
 
 [node name="TileMapLayer" parent="." instance=ExtResource("3_0ooj0")]

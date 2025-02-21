@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cx3t6flflc4ln"]
 
-[ext_resource type="Script" path="res://code/character_body_2d.gd" id="1_n1aun"]
+[ext_resource type="Script" path="res://code/camera.gd" id="1_n1aun"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvslv"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="camera" type="CharacterBody2D"]
 script = ExtResource("1_n1aun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
