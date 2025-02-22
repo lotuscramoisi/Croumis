@@ -19,7 +19,7 @@ var global_energy = 0
  
 func _ready() -> void:
 	z_index = 2
-	timer.timeout.connect(spawn_phero)	
+	timer.timeout.connect(spawn_phero)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,9 +32,9 @@ func _process(delta: float) -> void:
 			hunt_behavior()
 		State.RETURNING:
 			return_behavior()
-
-	position += delta * velocity
 	
+	position += delta * velocity
+	print(position)
 	# Flip the sprite when changing direction
 	if velocity.length() > 0:
 		rotation = velocity.angle() + PI / 2

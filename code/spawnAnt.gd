@@ -2,7 +2,7 @@ extends Node2D
 
 @export var tilemap: TileMapLayer
 @export var ant: PackedScene
-@export var spawn_layer: int = 1
+@export var spawn_layer: int = 2
 @export var enemy_parent: Node2D
 @onready var timer = $Timer
  

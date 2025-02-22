@@ -1,26 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnfy43lai5m1"]
+[gd_scene load_steps=5 format=3 uid="uid://87tqjo85sfh5"]
 
 [ext_resource type="Script" path="res://code/AntHandling.gd" id="1_7b4hm"]
 [ext_resource type="PackedScene" uid="uid://duvh63gc0tswy" path="res://scene/pheromone.tscn" id="2_a2l3m"]
 [ext_resource type="Texture2D" uid="uid://ir4me35o6drk" path="res://assets/foumie.png" id="3_lb58u"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87uvt"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odf1b"]
 radius = 21.0
 height = 84.0
 
-[node name="Ant" type="Node2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 2
+collision_layer = 2
+motion_mode = 1
+platform_floor_layers = 2
+platform_wall_layers = 1
 script = ExtResource("1_7b4hm")
 pheromone = ExtResource("2_a2l3m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_lb58u")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(-2, -2)
+shape = SubResource("CapsuleShape2D_odf1b")
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2, -2)
-shape = SubResource("CapsuleShape2D_87uvt")
