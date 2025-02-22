@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqe5i81ydrwr6"]
+[gd_scene load_steps=4 format=3 uid="uid://d4gwph6nhebou"]
 
 [ext_resource type="Script" path="res://code/main_menu.gd" id="1_v77fq"]
 [ext_resource type="Texture2D" uid="uid://dt7pjudo6ojlf" path="res://assets/fourmis-disperse-graines.jpeg" id="2_nhweu"]

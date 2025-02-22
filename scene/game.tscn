@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://d3ms6mwgycy7l"]
 
-[ext_resource type="PackedScene" uid="uid://87tqjo85sfh5" path="res://scene/ant.tscn" id="4_48y5i"]
+[ext_resource type="PackedScene" uid="uid://dnfy43lai5m1" path="res://scene/ant.tscn" id="4_48y5i"]
 [ext_resource type="PackedScene" uid="uid://cx3t6flflc4ln" path="res://scene/camera.tscn" id="4_82kjx"]
 [ext_resource type="Script" path="res://code/spawnAnt.gd" id="4_mn7sr"]
 [ext_resource type="Texture2D" uid="uid://bqk045e8k0b3w" path="res://assets/world.png" id="5_cfanp"]

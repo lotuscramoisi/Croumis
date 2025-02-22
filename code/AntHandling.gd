@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 enum State { WANDERING, HUNTING, RETURNING}
 
@@ -6,7 +6,6 @@ enum State { WANDERING, HUNTING, RETURNING}
 @export var SPEED: float = 60
 
 var age: float = 0
-var velocity = Vector2.ZERO
 var current_state = State.WANDERING
 var target_position = Vector2.ZERO
 var base_position = Vector2.ZERO
@@ -33,8 +32,7 @@ func _process(delta: float) -> void:
 		State.RETURNING:
 			return_behavior()
 	
-	position += delta * velocity
-	print(position)
+	move_and_slide()
 	# Flip the sprite when changing direction
 	if velocity.length() > 0:
 		rotation = velocity.angle() + PI / 2
