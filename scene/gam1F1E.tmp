@@ -138,7 +138,7 @@ ant = ExtResource("4_48y5i")
 enemy_parent = NodePath(".")
 
 [node name="Timer" type="Timer" parent="SpawnerAnts"]
-wait_time = 30.0
+wait_time = 5.0
 autostart = true
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]

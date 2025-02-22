@@ -21,14 +21,11 @@ func _process(delta: float) -> void:
 
 	
 func get_key(x: int, y: int) -> String:
-	return str(x) + "," + str(y)
+	return str(round(x/64)) + "," + str(round(y/64))
 
 # Augmente la valeur à une certaine coordonnée (x, y)
 func increase_value(x: int, y: int, amount: int = 1):
-	var xBase64 = round(x/64) 
-	var yBase64 = round(y/64)
-
-	var key = get_key(xBase64, yBase64)
+	var key = get_key(x, y)
 	if key in matrix:
 		matrix[key] += amount
 	else:
