@@ -56,7 +56,7 @@ func wander_behavior(delta):
 			global_energy += delta
 		else:
 			motivation_to_explore = 0
-		
+		print(motivation_to_explore)
 		# If too much time passes without finding any traces, return to base
 		if motivation_to_explore > 2.5 || global_energy > 10:
 			current_state = State.RETURNING
