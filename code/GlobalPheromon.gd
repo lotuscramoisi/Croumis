@@ -27,7 +27,6 @@ func get_key(x: int, y: int) -> String:
 func increase_value(x: int, y: int, amount: int = 1):
 	var xBase64 = round(x/64) 
 	var yBase64 = round(y/64)
-	
 
 	var key = get_key(xBase64, yBase64)
 	if key in matrix:
@@ -40,17 +39,13 @@ func decrease_all_values(amount: float):
 	var keys_to_remove = []
 	
 	for key in matrix.keys():
-		matrix[key] = max(0, matrix[key] - amount)
+		matrix[key] = max(0, matrix[key] - amount) # Between 0 and previous value - amount
 		if matrix[key] == 0:
 			keys_to_remove.append(key)  # Store keys to delete after iteration
 
 	# Remove empty values to keep dictionary small
 	for key in keys_to_remove:
 		matrix.erase(key)
-
-# Check if the coordinates (x, y) are within the allowed range
-func is_within_bounds(x: int, y: int) -> bool:
-	return x >= min_x and x <= max_x and y >= min_y and y <= max_y
 
 # Print only existing values (sparse matrix)
 func print_matrix():
