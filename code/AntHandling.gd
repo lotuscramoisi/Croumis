@@ -33,6 +33,13 @@ func _process(delta: float) -> void:
 			return_behavior()
 	
 	move_and_slide()
+	
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		print("Collision avec :", collider.name)
+
 	# Flip the sprite when changing direction
 	if velocity.length() > 0:
 		rotation = velocity.angle() + PI / 2
