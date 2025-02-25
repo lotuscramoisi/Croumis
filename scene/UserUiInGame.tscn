@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b67u44n5lh7b2"]
+
+[ext_resource type="Texture2D" uid="uid://crgc5e81lqx73" path="res://assets/Nest.png" id="1_kflaj"]
+[ext_resource type="Script" path="res://code/numberOfAnts.gd" id="1_qdmdj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qdmdj")
+
+[node name="Souche" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_kflaj")
+
+[node name="NumberOfAnts" type="Label" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 14.0
+offset_right = 93.0
+offset_bottom = 37.0
+scale = Vector2(1.36, 1.48692)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

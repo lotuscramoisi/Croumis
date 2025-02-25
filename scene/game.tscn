@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d3ms6mwgycy7l"]
+[gd_scene load_steps=12 format=4 uid="uid://d3ms6mwgycy7l"]
 
 [ext_resource type="PackedScene" uid="uid://dnfy43lai5m1" path="res://scene/ant.tscn" id="4_48y5i"]
 [ext_resource type="PackedScene" uid="uid://cx3t6flflc4ln" path="res://scene/camera.tscn" id="4_82kjx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqk045e8k0b3w" path="res://assets/world.png" id="5_cfanp"]
 [ext_resource type="Texture2D" uid="uid://c17lx8fb2mjnn" path="res://assets/mushroom.png" id="6_fc6vx"]
 [ext_resource type="Texture2D" uid="uid://crgc5e81lqx73" path="res://assets/Nest.png" id="6_to4ab"]
+[ext_resource type="PackedScene" uid="uid://b67u44n5lh7b2" path="res://scene/UserUiInGame.tscn" id="7_cac3f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wy2g6"]
 texture = ExtResource("5_cfanp")
@@ -153,3 +154,9 @@ texture = ExtResource("6_to4ab")
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAkABMAAAAAAAAAAAANAAcAAAAAAAAAAAAGAAwAAAADAAAAAAASAAcAAAADAAAAAAAJAAgAAAACAAAAAAD+/w8AAAACAAAAAAD2/woAAAACAAAAAADq/wsAAAAAAAAAAAAUAAEAAAAAAAAAAAD1//z/AAAAAAAAAAAIAPr/AAADAAAAAAAIAPv/AAADAAAAAAAIAPz/AAADAAAAAAAIAP3/AAADAAAAAAAIAP7/AAADAAAAAAAJAP//AAADAAAAAAAJAAAAAAADAAAAAAAJAAEAAAADAAAAAAAJAAIAAAADAAAAAAAJAAMAAAADAAAAAAAJAAQAAAADAAAAAAAJAAUAAAADAAAAAAAJAAYAAAADAAAAAAAJAAcAAAADAAAAAAAIAAcAAAADAAAAAAAIAAgAAAADAAAAAAAHAAgAAAADAAAAAAAGAAkAAAADAAAAAAAFAAkAAAADAAAAAAAEAAkAAAADAAAAAAAEAAoAAAADAAAAAAADAAoAAAADAAAAAAACAAoAAAADAAAAAAABAAoAAAADAAAAAAAAAAoAAAADAAAAAAD//woAAAADAAAAAAD+/woAAAADAAAAAAD9/woAAAADAAAAAAD8/woAAAADAAAAAAD7/wkAAAADAAAAAAD6/wkAAAADAAAAAAD5/wgAAAADAAAAAAD4/wgAAAADAAAAAAD4/wcAAAADAAAAAAD3/wcAAAADAAAAAAD3/wYAAAADAAAAAAD2/wUAAAADAAAAAAD2/wQAAAADAAAAAAD1/wMAAAADAAAAAAD1/wIAAAADAAAAAAD1/wEAAAADAAAAAAD1/wAAAAADAAAAAAD0////AAADAAAAAAD0//7/AAADAAAAAAD0//3/AAADAAAAAAD0//z/AAADAAAAAAD1//v/AAADAAAAAAD1//r/AAADAAAAAAD2//n/AAADAAAAAAD3//n/AAADAAAAAAD3//j/AAADAAAAAAD4//j/AAADAAAAAAD5//f/AAADAAAAAAD6//f/AAADAAAAAAD7//f/AAADAAAAAAD8//f/AAADAAAAAAD9//f/AAADAAAAAAD+//f/AAADAAAAAAD///f/AAADAAAAAAAAAPf/AAADAAAAAAABAPf/AAADAAAAAAACAPf/AAADAAAAAAACAPj/AAADAAAAAAADAPj/AAADAAAAAAAEAPj/AAADAAAAAAAFAPj/AAADAAAAAAAGAPj/AAADAAAAAAAGAPn/AAADAAAAAAAHAPn/AAADAAAAAAAIAPn/AAADAAAAAAAJAPn/AAADAAAAAAA=")
 tile_set = SubResource("TileSet_wkglk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game UI" parent="CanvasLayer" instance=ExtResource("7_cac3f")]
+offset_top = 1.0
+offset_bottom = 1.0

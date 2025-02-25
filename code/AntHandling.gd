@@ -12,6 +12,7 @@ var base_position = Vector2.ZERO
 var motivation_to_explore = 0
 var global_energy = 0
 
+
 @export var pheromone: PackedScene
 @export var pheromone_parent: Node2D
 @onready var timer = $Timer
@@ -19,6 +20,7 @@ var global_energy = 0
 func _ready() -> void:
 	z_index = 2
 	timer.timeout.connect(spawn_phero)
+	GlobalColony.add_ants()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -48,6 +50,7 @@ func is_alive(delta):
 	age += delta
 	if age >= LIFESPAN:
 		die()
+		GlobalColony.remove_ants()
 
 func die():
 	queue_free()

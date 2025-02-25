@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalPheromon="*res://code/GlobalPheromon.gd"
+GlobalColony="*res://code/GlobalColony.gd"
 
 [editor_plugins]
 
