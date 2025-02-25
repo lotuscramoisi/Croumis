@@ -4,6 +4,7 @@
 
 [node name="pheromone" type="Node2D"]
 z_index = 2
+scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, 8)

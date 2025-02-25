@@ -1,6 +1,6 @@
 extends TileMapLayer
 
-var map_lens : int = 100
+var map_lens : int = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

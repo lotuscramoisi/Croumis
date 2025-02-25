@@ -94,6 +94,7 @@ texture = ExtResource("5_cfanp")
 3:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_t22nr"]
+tile_shape = 2
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/2 = SubResource("TileSetAtlasSource_wy2g6")
@@ -129,20 +130,18 @@ sources/0 = SubResource("TileSetAtlasSource_h44so")
 [node name="camera" parent="." instance=ExtResource("4_82kjx")]
 
 [node name="SpawnerAnts" type="Node2D" parent="." node_paths=PackedStringArray("tilemap", "enemy_parent")]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("4_mn7sr")
 tilemap = NodePath("../map")
 ant = ExtResource("4_48y5i")
 enemy_parent = NodePath(".")
 
 [node name="Timer" type="Timer" parent="SpawnerAnts"]
-wait_time = 30.0
 autostart = true
 
 [node name="map" type="TileMapLayer" parent="."]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(8, 6)
-scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_t22nr")
 script = ExtResource("5_j048g")
 
@@ -152,6 +151,5 @@ scale = Vector2(5, 5)
 texture = ExtResource("6_to4ab")
 
 [node name="food" type="TileMapLayer" parent="."]
-scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_wkglk")
 script = ExtResource("8_i2nhk")

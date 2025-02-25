@@ -9,6 +9,7 @@ radius = 13.0
 height = 46.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_7b4hm")
 pheromone = ExtResource("2_a2l3m")
 
