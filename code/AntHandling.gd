@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-enum State { WANDERING, HUNTING, RETURNING}
+enum State { WANDERING, HUNTING, RETURNING,COLLECTING}
 
-@export var LIFESPAN: float = 100
+@export var LIFESPAN: float = 1000
 @export var SPEED: float = 60
 
 var age: float = 0
@@ -11,6 +11,8 @@ var target_position = Vector2.ZERO
 var base_position = Vector2.ZERO
 var motivation_to_explore = 0
 var global_energy = 0
+var is_in_front_of = null
+var is_transporting = null
 
 
 @export var pheromone: PackedScene
@@ -34,17 +36,20 @@ func _process(delta: float) -> void:
 		State.RETURNING:
 			return_behavior()
 	
-	move_and_slide()
-	
-	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		print("Collision avec :", collider.name)
-
-	# Flip the sprite when changing direction
-	if velocity.length() > 0:
-		rotation = velocity.angle() + PI / 2
+	if current_state != State.COLLECTING: #the ant stop moving when collecting
+		move_and_slide()
+		
+		# Flip the sprite when changing direction
+		if velocity.length() > 0:
+			rotation = velocity.angle() + PI / 2
+			
+		if get_slide_collision_count():
+			var collision = get_slide_collision(0)
+			var collider = collision.get_collider()
+			is_in_front_of = collider.name
+			if !is_transporting and is_in_front_of == "food":
+				current_state = State.COLLECTING
+				collect_behavior(collision,collider)
 		
 func is_alive(delta):
 	age += delta
@@ -86,6 +91,7 @@ func return_behavior():
 	
 	# If close to base, reset to wandering
 	if position.distance_to(base_position) < 100:
+		is_transporting = null
 		current_state = State.WANDERING
 	
 func pick_direction_using_pheromons():
@@ -125,9 +131,24 @@ func pick_direction_using_pheromons():
 func start_hunting(target: Vector2):
 	current_state = State.HUNTING
 	target_position = target
-
+	
+func collect_behavior(collision, collider):
+	print("Collision avec :", collider.name)
+	
+	await get_tree().create_timer(3.0).timeout
+	#if collider.has_method("was_eaten"): 
+	collider.was_eaten(collision.get_position())
+	is_transporting = is_in_front_of
+	is_in_front_of = null
+	current_state = State.RETURNING
+	
 func spawn_phero():
-	GlobalPheromon.increase_value(position.x,position.y,1)
+	if is_transporting:
+		GlobalPheromon.increase_value(position.x,position.y,10)
+	elif current_state == State.RETURNING:
+		GlobalPheromon.increase_value(position.x,position.y,-5)
+	else:
+		GlobalPheromon.increase_value(position.x,position.y,1)
 	
 	
 	if pheromone:

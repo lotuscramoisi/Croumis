@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 600.0
 
 var zoom_minimum  = Vector2(.500001, .500001)
 var zoom_maximum  = Vector2(4.5000001, 4.5000001)
