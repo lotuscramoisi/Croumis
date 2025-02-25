@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d3ms6mwgycy7l"]
+[gd_scene load_steps=14 format=3 uid="uid://d3ms6mwgycy7l"]
 
 [ext_resource type="PackedScene" uid="uid://dnfy43lai5m1" path="res://scene/ant.tscn" id="4_48y5i"]
 [ext_resource type="PackedScene" uid="uid://cx3t6flflc4ln" path="res://scene/camera.tscn" id="4_82kjx"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://code/map.gd" id="5_j048g"]
 [ext_resource type="Texture2D" uid="uid://c17lx8fb2mjnn" path="res://assets/mushroom.png" id="6_fc6vx"]
 [ext_resource type="Texture2D" uid="uid://crgc5e81lqx73" path="res://assets/Nest.png" id="6_to4ab"]
+[ext_resource type="Script" path="res://code/food.gd" id="8_i2nhk"]
+[ext_resource type="PackedScene" uid="uid://b67u44n5lh7b2" path="res://scene/UserUiInGame.tscn" id="9_kcbjc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wy2g6"]
 texture = ExtResource("5_cfanp")
@@ -151,3 +153,8 @@ texture = ExtResource("6_to4ab")
 
 [node name="food" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_wkglk")
+script = ExtResource("8_i2nhk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("9_kcbjc")]
