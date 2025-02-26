@@ -137,7 +137,7 @@ func collect_behavior(collision, collider):
 	
 	await get_tree().create_timer(3.0).timeout
 	#if collider.has_method("was_eaten"): 
-	collider.was_eaten(collision.get_position())
+	collider.was_eaten(collision.get_collider_rid())
 	is_transporting = is_in_front_of
 	is_in_front_of = null
 	current_state = State.RETURNING
