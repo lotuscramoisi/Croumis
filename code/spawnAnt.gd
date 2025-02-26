@@ -11,7 +11,7 @@ func _ready() -> void:
 	spawn_ant()
 
 func spawn_ant():
-	print("Spawn ant")
+	#print("Spawn ant")
 	var spawn_positions = get_spawn_positions()
 	if spawn_positions.is_empty():
 		print("No spawn positions available!")

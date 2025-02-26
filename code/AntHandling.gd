@@ -14,9 +14,6 @@ var global_energy = 0
 var is_in_front_of = null
 var is_transporting = null
 
-
-@export var pheromone: PackedScene
-@export var pheromone_parent: Node2D
 @onready var timer = $Timer
  
 func _ready() -> void:
@@ -62,14 +59,14 @@ func die():
 
 func wander_behavior(delta):
 	if randf() < 0.05:
-		var found_a_trace = pick_direction_using_pheromons()
-		
+		#var found_a_trace = pick_direction_using_pheromons()
+		var found_a_trace
 		if !found_a_trace:
 			motivation_to_explore += delta
 			global_energy += delta
 		else:
 			motivation_to_explore = 0
-		print(motivation_to_explore)
+		#print(motivation_to_explore)
 		# If too much time passes without finding any traces, return to base
 		if motivation_to_explore > 2.5 || global_energy > 10:
 			current_state = State.RETURNING
@@ -112,13 +109,13 @@ func pick_direction_using_pheromons():
 
 	# Check all directions and find the one with the highest pheromone value
 	for dir in directions:
-		var key = GlobalPheromon.get_key(position.x + dir.x, position.y + dir.y)
-		var pheromone_value = GlobalPheromon.matrix.get(key, 0) # Default to 0 if not found
+		var key = GlobalPheromon.get_key(position)
+		var pheromone_value = GlobalPheromon.dico_phero.get(key,{}) # Default to 0 if not found
 		
 		if pheromone_value > max_pheromone:
 			max_pheromone = pheromone_value
 			best_angle = (position + dir).angle_to_point(position)
-			print("Best anglue", best_angle)
+			#print("Best anglue", best_angle)
 			
 	var angle_change = randf_range(-PI / 5, PI / 5)
 	velocity = Vector2(cos(best_angle + angle_change), sin(best_angle + angle_change)) * SPEED
@@ -144,20 +141,8 @@ func collect_behavior(collision, collider):
 	
 func spawn_phero():
 	if is_transporting:
-		GlobalPheromon.increase_value(position.x,position.y,10)
+		GlobalPheromon.increase_value(position,"food",10)
 	elif current_state == State.RETURNING:
-		GlobalPheromon.increase_value(position.x,position.y,-5)
+		GlobalPheromon.increase_value(position,"returning",10)
 	else:
-		GlobalPheromon.increase_value(position.x,position.y,1)
-	
-	
-	if pheromone:
-		var new_pheromone = pheromone.instantiate()
-		new_pheromone.position = position
-		
-		if pheromone_parent:
-			pheromone_parent.add_child(new_pheromone)
-		else:
-			get_parent().add_child(new_pheromone)
-	else:
-		print("No enemy scene assigned!")
+		GlobalPheromon.increase_value(position,"wandering",10)
