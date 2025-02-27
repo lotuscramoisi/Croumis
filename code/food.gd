@@ -5,7 +5,7 @@ var dico_of_food = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in 1200:
+	for i in 100:
 		set_cell(Vector2i(randi_range(0,map_lens) -map_lens/2,randi_range(0,map_lens)-map_lens/2),0 ,Vector2i(randi_range(0,2),0))
 	
 		

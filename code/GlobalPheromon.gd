@@ -35,20 +35,20 @@ func increase_value(position : Vector2, type : String, amount: int = 1):
 
 # Diminue la valeur de toutes les coordonnées sans descendre en dessous de 0
 func decrease_all_values(amount: float):
-	var keys_to_remove = []
+	var pheros_to_remove = []
 	
 	for key in dico_phero.keys():
 		for type in dico_phero[key].keys():
 			dico_phero[key][type] = max(0, dico_phero[key][type] - amount) # Between 0 and previous value - amount
 			if dico_phero[key][type] == 0:
-				keys_to_remove.append(Vector2(key,type))  # Store keys to delete after iteration
+				pheros_to_remove.append({"key" : key,"type" : type})  # Store keys to delete after iteration
 
 	# Remove empty values to keep dictionary small
-	for key in keys_to_remove:
-		dico_phero[key.x].erase(key.y)
-		if dico_phero[key.x].keys().lens() == 0:
-			dico_phero.erase(key.x)
-			erase_cell(key)
+	for phero in pheros_to_remove:
+		dico_phero[phero["key"]].erase(phero["type"])
+		if dico_phero[phero["key"]].keys().is_empty():
+			dico_phero.erase(phero["key"])
+			erase_cell(phero["key"])
 			
 
 
