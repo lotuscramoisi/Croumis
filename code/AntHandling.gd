@@ -106,9 +106,12 @@ func return_behavior():
 	
 	# If close to base, reset to wandering
 	if position.distance_to(base_position) < 100:
+		if is_transporting != null:
+			GlobalColony.add_food_in_colony()
+
+		is_transporting = null
 		motivation_to_explore = 0
 		global_energy = 0
-		is_transporting = null
 		current_state = State.WANDERING
 	
 func pick_direction_using_pheromons(delta):
