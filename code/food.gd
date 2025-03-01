@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 func was_eaten(food_body: RID):
 
 	if !dico_of_food.has(food_body):
-		dico_of_food[food_body] = 100
+		dico_of_food[food_body] = 1000
 		
 	dico_of_food[food_body] -= 10  # Diminue la quantité de nourriture
 	if dico_of_food[food_body] <= 0:

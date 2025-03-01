@@ -3,12 +3,21 @@ extends Node2D
 @export var tilemap: TileMapLayer
 @export var ant: PackedScene
 @export var spawn_layer: int = 2
+@export var base_ants: int = 20
 @export var enemy_parent: Node2D
 @onready var timer = $Timer
  
 func _ready() -> void:
-	timer.timeout.connect(spawn_ant)
-	spawn_ant()
+	#timer.timeout.connect(spawn_ant)
+	for i in base_ants:
+		spawn_ant()
+		
+func _process(delta: float) -> void:
+	# Spawn ants when more food than 5
+	var food_in_colony = GlobalColony.food_in_colony
+	if food_in_colony >= 5:
+		GlobalColony.food_in_colony -= food_in_colony
+		spawn_ant()
 
 func spawn_ant():
 	#print("Spawn ant")
