@@ -1,6 +1,7 @@
 extends TileMapLayer
 
 var dico_phero: Dictionary = {} 
+var max_value = 10
 
 var timer = 0.0
 
@@ -26,12 +27,12 @@ func get_key(position : Vector2) -> Vector2i:
 func increase_value(position : Vector2, type : String, amount: int = 1):
 	var key = get_key(position)
 	if key in dico_phero and dico_phero[key].has(type):
-		dico_phero[key][type] += amount
+		dico_phero[key][type] = min(dico_phero[key][type] + amount, max_value)
 	else:
 		if key not in dico_phero:
 			set_cell(key,0 ,Vector2i(3,3))
 			dico_phero[key] = {}
-		dico_phero[key][type] = amount
+		dico_phero[key][type] = min(amount, max_value)
 
 # Diminue la valeur de toutes les coordonnées sans descendre en dessous de 0
 func decrease_all_values(amount: float):

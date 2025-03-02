@@ -100,7 +100,7 @@ func return_behavior():
 	
 	precision = 0.05
 	
-	if randf() < 0.5:
+	if randf() < 0.15:
 		var noise_offset = Vector2(randf_range(-0.2, 0.2), randf_range(-0.2, 0.2))
 		velocity = (direction_to_base + noise_offset).normalized() * SPEED
 	
@@ -143,7 +143,7 @@ func pick_direction_using_pheromons(delta):
 		
 	if max_pheromone.has("food") and abs(best_angle["food"] - (base_position - position).normalized().angle()) > deg_to_rad(45):
 		velocity = Vector2(cos(best_angle["food"]), sin(best_angle["food"])) * SPEED
-		precision = 0.8
+		precision = 0.6
 		trace_had_been_found = true
 		return true
 	elif trace_had_been_found:
